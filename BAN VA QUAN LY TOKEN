@@ -1,0 +1,80 @@
+pragma solidity >=0.7.0 <0.9.0;
+
+contract Fcontract{
+    
+    event newUser(uint UID, string name, uint tokenBalance, uint ETHbalance, uint order);
+    
+    uint totalToken = 2000000; // tong token
+    uint soldToken = 0; // token da ban
+    uint tokenRemain = totalToken; // token con lai
+    
+    struct User{        // ten soluong token con lại số lượng eth của user và order  lần thứ bn 
+        string name;
+        uint tokenBalance;
+        uint ETHbalance;
+        uint order;
+    }
+    
+    mapping (uint=>address) public userToSystem; 
+    mapping (address=>uint) systemUserCount;
+    
+    User[] users; // khai bao mang user
+    
+    function (string memory _name) public{ 
+        users.push(User(_name, 0, 100, 0)); // đẩy dữ liệu user vào mảng user naytf 
+        uint id = users.length - 1;
+        userToSystem[id] = msg.sender;
+        systemUserCount[msg.sender] = systemUserCount[msg.sender] + 1; 
+        emit newUser(id, _name, 0, 100, 0);
+    }
+    
+    function buyToken(uint _userId, uint amount) external payable{ // mua token 
+        require(users[_userId].ETHbalance - amount> 0);
+        users[_userId].ETHbalance -= amount;
+        if(users[_userId].order <= 5){
+            require(amount*10000 < tokenRemain);
+            users[_userId].tokenBalance += 10000*amount;
+            tokenRemain -= 10000*amount;
+            soldToken += 10000*amount;
+        } else if(6 <= users[_userId].order && users[_userId].order <= 10){
+            require(amount*5000 < tokenRemain);
+            users[_userId].tokenBalance += 5000*amount;
+            tokenRemain -= 5000*amount;
+            soldToken += 5000*amount;
+        } else {
+            require(amount*1000 < tokenRemain);
+            users[_userId].tokenBalance += 1000*amount;
+            tokenRemain -= 1000*amount;
+            soldToken += 1000*amount;
+        }
+        totalToken = soldToken + tokenRemain;
+        users[_userId].order++;
+    }
+    
+    function transferToken(uint _from, uint _to, uint amount) public{
+        //Chua su dung duoc voi address
+        // User storage seller = users[systemUserCount[_from]];
+        // User storage receiver = users[systemUserCount[_to]];
+        User storage seller = users[_from];
+        User storage receiver = users[_to];
+        require(seller.tokenBalance - amount > 0);
+        seller.tokenBalance -= amount;
+        receiver.tokenBalance += amount;
+    }
+    
+    function getBalance(uint _userId) public view returns(uint256){
+        return users[_userId].tokenBalance;
+    }
+    
+    function getUserList() public view returns(User[] memory){
+        return users;
+    }
+    
+    function getUserInfor(uint _userId) public view returns(User memory){
+        return users[_userId];
+    }
+    
+    function getSysteminfo() public view returns(uint, uint, uint){
+        return (totalToken, soldToken, tokenRemain);
+    }
+}

@@ -1,0 +1,107 @@
+NỘI DUNG KHÓA HỌC LẬP TRÌNH BLOCKCHAIN
+Phần 1: Kiến Thức Về Blockchain
+Transactions
+
+Blocks
+
+Phần 2: Smart Contract
+Cách hoạt động của Smart Contract
+
+Accounts
+
+Transactions
+
+Gas
+
+Storage, Memory & Stack
+
+Set
+
+Message Call
+
+Logs
+
+Create
+
+Delegate Call / Call code & Libraries
+
+Deactive & Self-destruct
+
+Phẩn 3: Cài Đặt Solidity Compiler
+
+Phần 4: Lập Trình Solidity
+Kiến trúc Solidity
+
+Kiến trúc một Contract
+
+Kiểu dữ liệu
+
+Unit & Biến Globally Availble
+
+Expression & Cấu trúc điều khiển
+
+Contracts
+
+Solidity Assemble
+
+Miscellaneous
+
+Kinh nghiệm thực tế & cách xử lí các lỗi khi dùng các version Solidity khác nhau.
+
+Phần 5: Contract Metadata
+
+Phần 6: Contract ABI Specification
+Kiến trúc ABI
+
+Function Selector
+
+Agrument Encoding
+
+Kiểu dữ liệu
+
+Function Selector
+
+Events
+
+JSON
+
+Phần 7: Ethereum Request For Comment (ERC)
+Giới thiệu ERC
+
+Token ERC20
+
+Các chuẩn Token ERC phổ biến nhất
+
+Mua & lưu trữ ERC20 Token
+
+Deploy & Test ERC20 Token với RinkedBy Testnet
+
+Phần 8: Tự Xây Dựng & Vận Hành ICO Từ A-Z
+Giới thiệu ICO - Initial Coin Offering
+
+ICO Smart Contract
+
+ICO State Energency Stop & Restart
+
+Investment
+
+ICO Testing
+
+Token Locking
+
+Phần 9: Lập Trình FrontEnd
+Hướng dẫn lập trình giao diện người dùng tương tác Blockchain
+
+Nodejs / Express / MongoDB cơ bản
+
+Web3.JS Ethereum JS API
+
+Phần 10: Triển Khai ICO
+- Tự xây dựng một chương trình ICO, phát hành Token để huy động vốn từ cộng đồng cả thế giới.
+
+- Lập trình triển khai Token trên chuẩn ERC20
+
+- Kinh nghiệm thực tế lên plan triển khai ICO một cách hiệu quả nhất.
+
+Phần 11: Project Thực Tế
++ Viết trang web bán hàng tích hợp than
